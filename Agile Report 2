@@ -1,0 +1,6 @@
+### AgileReport 1 Week02
+- Current State: added creature movement 
+- Goals: add animation
+- Blockers: timing. I plan to use a random number genertor for a lot of the functions, and i dont want actions to get overwritten. 
+      ex; the walk movement is on a timer, but for it to sit for a cetain amount of time before it moves again
+- Next steps: click and drag objects around
