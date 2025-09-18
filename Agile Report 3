@@ -1,0 +1,21 @@
+### Retrospective
+1. What went well?
+I finished the animation. I also created a drag script, which can be applied to any object.
+2. What didn’t go well?
+I have to fix the origin of the creature sprite. Right now its drag point is where you clicked. And I want it to be separate for the creature and objects
+3. What can I improve next week?
+Fixing the drag point and I’m feeling like remaking the sprites to a mix non pixels and pixels for the border
+
+### Current state
+Creature can move. Player can drag objects and creature. Transparency and animation working. Have not tested it in build!!
+
+### User story 
+As a user I want interactivity so I won’t get bored of just watching the Pal
+
+### Acceptance criteria 
+Creature will leave dirt marks on your screen which will block your screen
+You will have to click and clean up the mess so that you can see again
+This will force you to pay attention to the Pal
+
+### Definition of done
+Randomly spawn in dirt objects. When player clicks on it, destroy object.
