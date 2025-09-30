@@ -39,10 +39,6 @@ public class move : MonoBehaviour
             sprite.flipX = false;
         }
 
-
-
-
-
         //////////Animator//////////////
 
         if (transform.position != walkSpot) //walk
@@ -60,8 +56,8 @@ public class move : MonoBehaviour
             animator.SetBool("mouseClick", true);
 
         }
-        
-        
+
+
 
     }
 
@@ -81,5 +77,6 @@ public class move : MonoBehaviour
         }
 
     }
+    //Need to stop timer, leave "moveTowards" where player drop them off at, then continue timer after some time
     
 }
