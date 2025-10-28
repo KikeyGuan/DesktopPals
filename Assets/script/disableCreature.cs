@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class disableCreature : MonoBehaviour
 {
+    public GameObject insideWindow, outside, bun;
     public move creatureMovement;
     public Animator creatureAnimator;
     //public Animator creatureStill;
@@ -21,6 +22,8 @@ public class disableCreature : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        bun.transform.SetParent(insideWindow.transform);
+        
         print("hit outside");
         if (other.gameObject.tag == "Player")
         {
@@ -33,6 +36,7 @@ public class disableCreature : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
+        bun.transform.SetParent(outside.transform);
         print("hit outside");
         if (other.gameObject.tag == "Player")
         {
