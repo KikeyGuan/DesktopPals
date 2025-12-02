@@ -24,10 +24,10 @@ public class disableCreature : MonoBehaviour
     {
         bun.transform.SetParent(insideWindow.transform);
         
-        print("hit outside");
+        //print("hit outside");
         if (other.gameObject.tag == "Player")
         {
-            print("hit");
+            //print("hit");
             creatureMovement.enabled = false;
             creatureAnimator.SetBool("isWalk", false);
             creatureAnimator.SetBool("mouseClick", false);
@@ -37,10 +37,10 @@ public class disableCreature : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         bun.transform.SetParent(outside.transform);
-        print("hit outside");
+        //print("hit outside");
         if (other.gameObject.tag == "Player")
         {
-            print("hit");
+            //print("hit");
             creatureMovement.enabled = true;
             creatureAnimator.SetBool("isWalk", true);
             creatureAnimator.SetBool("mouseClick", true);

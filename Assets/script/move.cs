@@ -6,11 +6,12 @@ public class move : MonoBehaviour
 {
     private Vector3 walkSpot;
     public float coolDown, speed;
-    float randX, randY;
-    private IEnumerator coroutine;
+    float randX, randY, ranNumTime;
+    private IEnumerator coroutine, coroutineDirt;
     public Animator animator;
     public SpriteRenderer sprite;
     public dragable clickBool;
+    private bool canDirty=true;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class move : MonoBehaviour
 
         coroutine = walkCoolDown(coolDown);
         StartCoroutine(coroutine);
+        
 
     }
 
@@ -57,6 +59,18 @@ public class move : MonoBehaviour
 
         }
 
+        //spaen dirty trasks
+        ranNumTime = Random.Range(10f, 15f);
+        if (canDirty == true)
+        {
+            print("coro");
+            coroutineDirt = placeDirt(ranNumTime);
+            StartCoroutine(coroutineDirt);
+            canDirty = false;
+        }
+        //study this ^^^^ for corotinuewalk puase
+
+
 
 
     }
@@ -76,6 +90,15 @@ public class move : MonoBehaviour
             randSpace();
         }
 
+    }
+    private IEnumerator placeDirt(float i)
+    {
+        
+        yield return new WaitForSeconds(i);
+        //Instantiate(apple, gameWindow.transform.position, transform.rotation);
+        print("SOWAN");
+        canDirty = true;
+            
     }
     //Need to stop timer, leave "moveTowards" where player drop them off at, then continue timer after some time
     
