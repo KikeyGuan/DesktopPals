@@ -12,6 +12,7 @@ public class move : MonoBehaviour
     public SpriteRenderer sprite;
     public dragable clickBool;
     private bool canDirty=true;
+    public GameObject[] dirtStains;
 
     void Start()
     {
@@ -56,6 +57,7 @@ public class move : MonoBehaviour
         if (clickBool.clicked == true) //lift
         {
             animator.SetBool("mouseClick", true);
+            animator.SetBool("isWalk", false);
 
         }
 
@@ -69,9 +71,6 @@ public class move : MonoBehaviour
             canDirty = false;
         }
         //study this ^^^^ for corotinuewalk puase
-
-
-
 
     }
 
@@ -95,11 +94,24 @@ public class move : MonoBehaviour
     {
         
         yield return new WaitForSeconds(i);
-        //Instantiate(apple, gameWindow.transform.position, transform.rotation);
-        print("SOWAN");
+        Instantiate(dirtStains[Random.Range(0,dirtStains.Length)], transform.position, transform.rotation);
+        print("splatter");
         canDirty = true;
             
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if(collision.collider.tag == "food")
+        {
+            Instantiate(dirtStains[0], transform.position, transform.rotation);
+
+            animator.SetTrigger("isEat");
+        }
+
+    }
     //Need to stop timer, leave "moveTowards" where player drop them off at, then continue timer after some time
+    //to puase need to swtich out the corotine usage. no while true, use structure of dirt
     
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class buttons : MonoBehaviour
 {
-    public GameObject miniShooter, gameWindow, apple;
+    public GameObject miniShooter, gameWindow, apple, storyWindow;
     int buttonClick = 0;
-    public bool miniGameButton;
+    public bool miniGameButton, OnStory = false;
     public catchGame canCloseBool;
     // Start is called before the first frame update
     void Start()
@@ -27,29 +27,43 @@ public class buttons : MonoBehaviour
             miniShooter.SetActive(false);
         }
 
-
-
     }
 
     public void food()
     {
-        Instantiate(apple, gameWindow.transform.position, transform.rotation);
+        if(OnStory == false)
+        {
+            Instantiate(apple, gameWindow.transform.position, transform.rotation);
+        }
+        
     }
     
     public void miniGame() //from the button that starts the mini game
     {
+        if(OnStory == false)
+        {
+            buttonClick++;
+            if (buttonClick % 2 == 1)
+            {
+                canCloseBool.canClose = false;
+                canCloseBool.startInvoke = true;
+                miniGameButton = true;
+            }
+            else
+            {
+                miniGameButton = false;
+            }
+        }
         
-        buttonClick++;
-        if (buttonClick % 2 == 1)
-        {
-            canCloseBool.canClose = false;
-            canCloseBool.startInvoke = true;
-            miniGameButton = true;
-        }
-        else
-        {
-            miniGameButton = false;
-        }
 
     }
+
+    public void chat()
+    {
+        OnStory = true;
+        storyWindow.SetActive(true);
+        //Instantiate(storyWindow, gameWindow.transform.position, transform.rotation);
+        ///check out button interactble api
+    }
+
 }
